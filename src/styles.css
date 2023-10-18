@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+
+body {
+  background: #f3e4f1;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+h1 {
+  margin: 20px 0;
+}
+
+h2,
+h3 {
+  margin: 0;
+}
+
+h1,
+h2 {
+  color: #a855f7;
+  text-transform: uppercase;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.horizontal {
+  flex-direction: row;
+}
+
+li {
+  list-style: none;
+}
+
+.nav-items {
+  text-decoration: none;
+  color: #000;
+}
+
+.nav-items:hover {
+  color: #a855f7;
+  cursor: pointer;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  margin: 10px;
+  padding: 5px 15px;
+  background: #c4b5fd;
+  border: 1px solid;
+  border-radius: 5px;
+  gap: 20px;
+}
+
+button:hover {
+  cursor: pointer;
+  background: #a855f7;
+  color: #fff;
+  border: 1px solid;
+}
+
+table,
+th,
+td {
+  border: 1px solid;
+}
+
+th,
+td {
+  padding: 10px;
+}
