@@ -5,7 +5,7 @@ import {
   addPatientAsync,
   updatePatientAsync,
   fetchWards,
-  getAWardAsync
+  getAWardAsync,
 } from "../../features";
 
 const PatientForm = () => {
@@ -23,7 +23,7 @@ const PatientForm = () => {
     gender: patient ? patient.gender : "Male",
     medicalHistory: patient ? patient.medicalHistory.join(", ") : "",
     contact: patient ? patient.contact : 0,
-    ward: patient ? patient.ward._id : ""
+    ward: patient ? patient.ward._id : "",
   });
 
   const handleSubmit = (e) => {
@@ -32,12 +32,17 @@ const PatientForm = () => {
       dispatch(
         updatePatientAsync({
           id: patient._id,
-          updatedPatient: patientInput
-        })
+          updatedPatient: patientInput,
+        }),
       );
       navigate(`/patients/${patient._id}`);
     } else {
-      dispatch(addPatientAsync(patientInput));
+      dispatch(
+        addPatientAsync({
+          ...patientInput,
+          ward: patientInput.ward ? patientInput.ward : wards[0]._id,
+        }),
+      );
       navigate("/");
     }
   };
@@ -116,7 +121,7 @@ const PatientForm = () => {
               </td>
               <td>
                 <input
-                  placeholder="Enter Medical History separated by commas"
+                  placeholder="Separated by commas"
                   type="text"
                   value={patientInput.medicalHistory}
                   onChange={(e) =>
@@ -124,7 +129,7 @@ const PatientForm = () => {
                       ...patientInput,
                       medicalHistory: e.target.value
                         .replace(/ /g, "")
-                        .split(",")
+                        .split(","),
                     })
                   }
                   required
@@ -144,7 +149,7 @@ const PatientForm = () => {
                   onChange={(e) =>
                     setPatientInput({
                       ...patientInput,
-                      contact: e.target.value
+                      contact: e.target.value,
                     })
                   }
                   required
@@ -160,7 +165,7 @@ const PatientForm = () => {
                   onChange={(e) =>
                     setPatientInput({
                       ...patientInput,
-                      ward: e.target.value
+                      ward: e.target.value,
                     })
                   }
                   value={patientInput.ward}
